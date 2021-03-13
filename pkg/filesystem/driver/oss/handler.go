@@ -405,7 +405,7 @@ func (handler Driver) Token(ctx context.Context, TTL int64, key string) (seriali
 	}
 
 	// 生成回调地址
-	siteURL := model.GetSiteURL()
+	siteURL := model.GetApiURL()
 	apiBaseURI, _ := url.Parse("/api/v3/callback/oss/" + key)
 	apiURL := siteURL.ResolveReference(apiBaseURI)
 

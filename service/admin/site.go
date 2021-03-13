@@ -114,6 +114,7 @@ func (service *NoParamService) Summary() serializer.Response {
 			"shares":           shares,
 			"version":          versions,
 			"siteURL":          model.GetSettingByName("siteURL"),
+			"apiURL":          model.GetSettingByName("apiURL"),
 			"fileTotal":        fileTotal,
 			"userTotal":        userTotal,
 			"publicShareTotal": publicShareTotal,

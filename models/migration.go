@@ -75,6 +75,7 @@ func addDefaultPolicy() {
 func addDefaultSettings() {
 	defaultSettings := []Setting{
 		{Name: "siteURL", Value: `http://localhost`, Type: "basic"},
+		{Name: "apiURL", Value: `http://localhost`, Type: "basic"},
 		{Name: "siteName", Value: `Cloudreve`, Type: "basic"},
 		{Name: "siteICPId", Value: ``, Type: "basic"},
 		{Name: "register_enabled", Value: `1`, Type: "register"},

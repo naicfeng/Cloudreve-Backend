@@ -241,7 +241,7 @@ func (service *ItemIDService) Archive(ctx context.Context, c *gin.Context) seria
 	}
 
 	// 生成一次性压缩文件下载地址
-	siteURL, err := url.Parse(model.GetSettingByName("siteURL"))
+	siteURL, err := url.Parse(model.GetSettingByName("apiURL"))
 	if err != nil {
 		return serializer.Err(serializer.CodeNotSet, "无法解析站点URL", err)
 	}

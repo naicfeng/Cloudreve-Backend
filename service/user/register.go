@@ -82,9 +82,10 @@ func (service *UserRegisterService) Register(c *gin.Context) serializer.Response
 
 		// 签名激活请求API
 		base := model.GetSiteURL()
+		apiurl := model.GetApiURL()
 		userID := hashid.HashID(user.ID, hashid.UserID)
 		controller, _ := url.Parse("/api/v3/user/activate/" + userID)
-		activateURL, err := auth.SignURI(auth.General, base.ResolveReference(controller).String(), 86400)
+		activateURL, err := auth.SignURI(auth.General, apiurl.ResolveReference(controller).String(), 86400)
 		if err != nil {
 			return serializer.Err(serializer.CodeEncryptError, "无法签名激活URL", err)
 		}

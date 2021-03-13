@@ -1,3 +1,8 @@
+
+> 这是 [Cloudreve](https://github.com/cloudreve/Cloudreve) 的Fork版本，前后端分离的后端
+> 分离的前端请看[Cloudreve-frontend](https://github.com/naicfeng/Cloudreve-frontend)
+
+
 <h1 align="center">
   <br>
   <a href="https://cloudreve.org/" alt="logo" ><img src="https://raw.githubusercontent.com/cloudreve/frontend/master/public/static/img/logo192.png" width="150"/></a>

@@ -35,7 +35,7 @@ func (user User) WebAuthnDisplayName() string {
 // WebAuthnIcon 获得用户头像
 func (user User) WebAuthnIcon() string {
 	avatar, _ := url.Parse("/api/v3/user/avatar/" + hashid.HashID(user.ID, hashid.UserID) + "/l")
-	base := GetSiteURL()
+	base := GetApiURL()
 	base.Scheme = "https"
 	return base.ResolveReference(avatar).String()
 }

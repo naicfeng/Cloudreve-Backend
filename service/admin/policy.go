@@ -225,7 +225,7 @@ func (service *SlaveTestService) Test() serializer.Response {
 
 	// 请求正文
 	body := map[string]string{
-		"callback": model.GetSiteURL().String(),
+		"callback": model.GetApiURL().String(),
 	}
 	bodyByte, _ := json.Marshal(body)
 

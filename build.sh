@@ -17,29 +17,13 @@ debugInfo () {
 }
 
 buildAssets () {
-  cd $REPO
-  rm -rf assets/build
-  rm -f statik/statik.go
-
-  export CI=false
-
-  cd $REPO/assets
-
-  yarn install
-  yarn run build
-
-  if ! [ -x "$(command -v statik)" ]; then
-    export CGO_ENABLED=0
-    go get github.com/rakyll/statik
-  fi
 
   cd $REPO
-  statik -src=assets/build/  -include=*.html,*.js,*.json,*.css,*.png,*.svg,*.ico,*.ttf -f
 }
 
 buildBinary () {
   cd $REPO
-  go build -a -o cloudreve -ldflags " -X 'github.com/cloudreve/Cloudreve/v3/pkg/conf.BackendVersion=$VERSION' -X 'github.com/cloudreve/Cloudreve/v3/pkg/conf.LastCommit=$COMMIT_SHA'"
+  go build -a -o cloudreve -ldflags " -s -w"
 }
 
 _build() {
@@ -61,7 +45,7 @@ _build() {
         out="release/cloudreve_${COMMIT_SHA}_${os}_${arch}"
     fi
 
-    go build -a -o "${out}" -ldflags " -X 'github.com/cloudreve/Cloudreve/v3/pkg/conf.BackendVersion=$VERSION' -X 'github.com/cloudreve/Cloudreve/v3/pkg/conf.LastCommit=$COMMIT_SHA'"
+    go build -a -o "${out}" -ldflags " -s -w"
 
     if [ "$os" = "windows" ]; then
       mv $out release/cloudreve.exe

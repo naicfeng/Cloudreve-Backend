@@ -10,7 +10,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
 	"github.com/cloudreve/Cloudreve/v3/pkg/cache"
 	"github.com/cloudreve/Cloudreve/v3/pkg/util"
 	"github.com/jinzhu/gorm"
@@ -245,7 +244,9 @@ func (policy *Policy) GetUploadURL() string {
 	controller, _ := url.Parse("")
 	switch policy.Type {
 	case "local", "onedrive":
-		return "/api/v3/file/upload"
+		apiURL := GetApiURL()
+		apiPath, _ := url.Parse("/api/v3/file/upload")
+		return apiURL.ResolveReference(apiPath).String()
 	case "remote":
 		controller, _ = url.Parse("/api/v3/slave/upload")
 	case "oss":

@@ -276,7 +276,7 @@ func (handler Driver) signSourceURL(ctx context.Context, path string, ttl int64)
 // Token 获取上传策略和认证Token
 func (handler Driver) Token(ctx context.Context, TTL int64, key string) (serializer.UploadCredential, error) {
 	// 生成回调地址
-	siteURL := model.GetSiteURL()
+	siteURL := model.GetApiURL()
 	apiBaseURI, _ := url.Parse("/api/v3/callback/qiniu/" + key)
 	apiURL := siteURL.ResolveReference(apiBaseURI)
 

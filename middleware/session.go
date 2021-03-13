@@ -30,7 +30,7 @@ func Session(secret string) gin.HandlerFunc {
 
 	// Also set Secure: true if using SSL, you should though
 	// TODO:same-site policy
-	Store.Options(sessions.Options{HttpOnly: true, MaxAge: 7 * 86400, Path: "/"})
+	Store.Options(sessions.Options{HttpOnly: true, MaxAge: 7 * 86400, Path: "/", Domain: "cuojue.org"})
 	return sessions.Sessions("cloudreve-session", Store)
 }
 

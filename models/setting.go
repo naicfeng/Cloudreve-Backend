@@ -77,6 +77,15 @@ func GetSiteURL() *url.URL {
 	return base
 }
 
+// GetSiteURL 获取站点API地址
+func GetApiURL() *url.URL {
+	base, err := url.Parse(GetSettingByName("apiURL"))
+	if err != nil {
+		base, _ = url.Parse("https://cuojue.org")
+	}
+	return base
+}
+
 // GetIntSetting 获取整形设置值，如果转换失败则返回默认值defaultVal
 func GetIntSetting(key string, defaultVal int) int {
 	res, err := strconv.Atoi(GetSettingByName(key))
